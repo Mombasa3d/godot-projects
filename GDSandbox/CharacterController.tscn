@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://.import/scripts/CharacterController.gd" type="Script" id=1]
+[ext_resource path="res://art/player.glb" type="PackedScene" id=2]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 1, 0.401229, 1.40054 )
+
+[node name="Character" type="KinematicBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.177565, 0 )
+collision_mask = 6
+script = ExtResource( 1 )
+gravity = 75
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.365781 )
+shape = SubResource( 1 )
+
+[node name="Pivot" parent="." instance=ExtResource( 2 )]
+
+[node name="DashTimer" type="Timer" parent="."]
+wait_time = 0.3

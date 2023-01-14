@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://CharacterController.tscn" type="PackedScene" id=1]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 20.6155, 1, 20.6196 )
+
+[sub_resource type="CubeMesh" id=2]
+size = Vector3( 40, 1, 40 )
+
+[node name="Node" type="Node"]
+
+[node name="Floor" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.568739, 0 )
+collision_layer = 4
+collision_mask = 0
+
+[node name="FloorCol" type="CollisionShape" parent="Floor"]
+transform = Transform( 1, 0, 0, 0, 0.2, 0, 0, 0, 1, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="FloorMesh" type="MeshInstance" parent="Floor"]
+transform = Transform( 1.03021, 0, 0, 0, 1.03021, 0, 0, 0, 1.03021, 0, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.591887, 0.806021, 0, -0.806021, 0.591887, 3.75078, 6.32939, 17.8064 )
+shadow_enabled = true
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.905406, 0.424547, 0, -0.424547, 0.905406, -0.916789, 7.31635, 24.7358 )
+current = true
+fov = 64.0
+near = 0.04
+
+[node name="Character" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46801, 0 )
